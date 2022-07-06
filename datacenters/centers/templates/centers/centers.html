@@ -3,20 +3,17 @@
 <head>
     <meta charset="utf-8"/>
     <title>{% block title %}{% endblock %}</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'hello/site.css' %}"/>
+    
 </head>
 
 <body>
-
 
 <div class="body-content">
     {% block content %}
     <table style="border:1px solid #C0C0C0">
     <th>Interface Name</th> <th>Port</th> <th>Vlan ID</th> <th>IP6 Address/Prefix length</th> 
     <tbody>
-        
-     
+         
         {% for datacenter in centers %}
             <tr>
                 <td>{{ datacenter.interface_name |default_if_none:"" }}</td>
@@ -25,10 +22,14 @@
                 <td>{{ datacenter.ipv6_address |default_if_none:"" }}/{{datacenter.prefix_length}}</td>
             </tr>
         {% endfor %}
+        
+        
         </tbody>
+        {% if centers|length == 0 %}
+            <div>Please add some data in the model first</div>
+        {% endif %}
     {% endblock %}
     
- 
 </div>
 </body>
 </html>
