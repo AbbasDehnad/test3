@@ -18,8 +18,8 @@
             <tr>
                 <td>{{ datacenter.interface_name |default_if_none:"" }}</td>
                 <td>{{ datacenter.port |default_if_none:"" }}</td>
-                <td>{{ datacenter.vlan_id |default_if_none:"" }}</td>
-                <td>{{ datacenter.ipv6_address |default_if_none:"" }}/{{datacenter.prefix_length}}</td>
+                <td>{{ datacenter.vlan_id |default_if_none:"NA" }}</td>
+                <td>{{ datacenter.ipv6_address |default_if_none:"" }}/{{datacenter.prefix_length|default_if_none:""}}</td>
             </tr>
         {% endfor %}
         
